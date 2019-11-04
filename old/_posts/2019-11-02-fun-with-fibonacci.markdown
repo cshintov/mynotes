@@ -4,7 +4,7 @@ title:  "Fun with fibonacci!"
 date:   2019-11-02 13:45:34 +0530
 categories: jekyll update
 ---
-I love [fibonacci] series! Especially to write a function to generate it. It can be used to illustrate some nice programming concepts. It's recursive implementation is just beautiful. With [memoization], of course, for better [time complexity].
+I love [fibonacci] series! It can be used to illustrate some nice programming concepts. It's recursive implementation is just beautiful. With [memoization], of course, for better [time complexity].
 
 What's a fibonacci? It's the following series. <br><br>
 `1, 1, 2, 3, 5, 8, 13, ...`

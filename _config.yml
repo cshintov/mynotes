@@ -3,16 +3,16 @@ baseurl: ""
 url: "https://shendao.netlify.com/" 
 
 # THEME-SPECIFIC CONFIGURATION
-title: Shinto CV
+title: Shinto C V
 description: "My notes on stuff!"      # used by search engines
 avatar: assets/img/malakh.jpg                         # Empty for no avatar in navbar
-favicon: assets/myfavicon.ico                             # Icon displayed in the tab
+favicon: assets/favicon.ico                             # Icon displayed in the tab
 
 # Header and footer text
-header_text: Mastering complexity!                                           # Change Blog header text
-header_feature_image: assets/img/pexels/triangular.jpeg
+header_text: My notes and thoughts!                                           # Change Blog header text
+header_feature_image: assets/img/pexels/chess.jpg
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+    "Ars longae, vita brevis, occasio praeceps, experimentum periculosum, iudecium dificile"
 
 # Blog
 excerpt: true                                           # Or "truncate" (first 250 characters), "false" to disable

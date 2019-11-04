@@ -3,6 +3,7 @@ layout: post
 title:  "Beautify your functions with decorators!"
 date:   2019-11-03 17:02:34 +0530
 categories: python fp
+tags: [python, fp]
 ---
 Functions are beautiful when they are small! 
 

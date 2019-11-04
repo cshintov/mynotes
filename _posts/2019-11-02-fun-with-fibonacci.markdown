@@ -3,6 +3,7 @@ layout: post
 title:  "Fun with fibonacci!"
 date:   2019-11-02 13:45:34 +0530
 categories: jekyll update
+tags: [python]
 ---
 I love [fibonacci] series! It can be used to illustrate important concepts in programming. It's recursive implementation is elegant yet inefficient. With [memoization], we can improve it's time complexity.
 

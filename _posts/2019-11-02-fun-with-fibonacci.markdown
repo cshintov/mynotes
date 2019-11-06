@@ -5,7 +5,7 @@ date:   2019-11-02 13:45:34 +0530
 categories: jekyll update
 tags: [python]
 ---
-I love [fibonacci] series! It can be used to illustrate important concepts in programming. It's recursive implementation is elegant yet inefficient. With [memoization], we can improve it's time complexity.
+I love [fibonacci] series! It can be used to illustrate important concepts in programming. It's recursive implementation is elegant and with [memoization], we can improve it's time complexity.
 
 What's a fibonacci? It's the following series. <br><br>
 `1, 1, 2, 3, 5, 8, 13, ...`

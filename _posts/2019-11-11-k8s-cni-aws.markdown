@@ -1,0 +1,85 @@
+---
+layout: post
+title: k8s-cni-aws [under-construction]
+date: 2019-11-11 12:13:32 +0553
+categories: k8s
+tags: [k8s, networking, eks]
+---
+### K8s Networking
+#### Basics
+k8s = api + etcd + controllers  
+api: for talking to k8s  
+etcd: to store desired state  
+controllers: to make the desired state, the actual state
+
+#### K8s n/w model
+- all pods can communicate with each other without using NAT 
+- all nodes can communicate with all pods without using NAT
+- the IP that a Pod identifies with is the IP others see it as 
+
+The following are the concerns:
+   * Container-to-Container networking
+   * Pod-to-Pod networking
+   * Pod-to-Service networking
+   * Internet-to-Service networking
+
+1. Container-to-Container networking:  
+A vm node can be repped as 
+        (VM : eth0). 
+That is a big picture view. Actually
+each process has its own n/w ns with firewayll, routes and n/w devices.
+
+        (VM : rootns: eth0). 
+        By default all processes are assigned to root-n/w-ns.
+A Pod is a group of docker containers that share a network ns. The Pod/Pause
+contcontainer creates a n/w ns for the containers in the Pod to join using
+"-net:<pause-container>" docker feature. Since the containers share the ns they
+can talk to each other using 'localhost'
+
+2. Pod-to-Pod networking:  
+Pods communicate with other pods (internal/external) using their real IPs.  
+a) pods in same node  
+Pod has to talk to another pod in another ns in the same node. Their namespaces can be
+connected using `linux-virtual-ethernet` device. [A `veth pair` consisting of
+two virtual interfaces is spread over two ns]. Each pod namespace is connected to
+the root ns with a veth pair.
+
+Now we want the pods to talk to each other through the root ns, we use a n/w
+bridge for that. A linux eth bridge is a virtual layer-2 used to connect two or
+more n/w segments. It uses MAC addresses and a forwarding table to decide
+whether to route data or drop it. It implements the ARP to discover the link
+layer MAC addresses associated witha an IP.
+
+b) pods in different nodes:  
+ARP will fail at the bridge because there is no device connected to the bridge with the correct MAC address for the packet. On failure, the bridge sends the packet out the default route - the root namespace's eth0 device. At this point the route leaves the Node and enters the network.
+
+Intra node traffic is n/w specific. 
+For example,`Amazon maintains a container networking plugin for Kubernetes that allows Node to Node networking to operate within an Amazon VPC environment using a Container Networking Interface (CNI) plugin.`
+
+The Container Networking Interface (CNI) provides a common API for connecting containers to the outside network. AWS CNI implementation uses Elastic Network Interface. All ENIs are connected with in a VPC. We are able to assign multiple ENIs to an EC2. So for each pod, the CNI plugin creates and attaches a new ENI. The CNI plugin creates and assigns a bunch of ENIs to each node. Whenver a new pod is deployed to a node, one of those gets assigned to it.
+
+
+* Pod-to-Service networking  
+A service gets assigned a virtual ip which gets load balanced across a group of pod Ips.
+This virtual ip is called the cluster-ip. K8s has a distributed in-cluster load-balancer for this purpose.  
+5.1) Netfilter and iptables  
+Netfilter offers various functions and operations for packet filtering, network address translation, and port translation, which provide the functionality required for directing packets through a network, as well as for providing the ability to prohibit packets from reaching sensitive locations within a computer network.
+`iptables` is a user-space program providing a table-based system for defining rules for manipulating and transforming packets using the netfilter framework.  In Kubernetes, iptables rules are configured by the `kube-proxy` controller that watches the Kubernetes API server for changes. The iptable rules selects from a pool of pod ips whenver a request is destined to a clusterip of a service.<br>
+
+5.2) IPVS (IP virtual server)  
+It runs on a host and acts as a load balancer in front of a cluster of real servers. We can use either iptables or IPVS for in-cluster load-balancing. IPVS uses hashtables and allows unlimited scale. When creating a Service load balanced with IPVS, three things happen: a dummy IPVS interface is created on the Node, the Service’s IP address is bound to the dummy IPVS interface, and IPVS servers are created for each Service IP address.
+
+Life-of-a-packet-from-pod-to-service-to-pod
+(1) Then it travels through the virtual Ethernet device to the bridge  
+`(pod1)->(svc1)`  
+(2). The ARP protocol running on the bridge does not know about the Service and so it transfers the packet out through the default route - eth0.  
+(3). Here, something different happens. Before being accepted at eth0, the packet is filtered through iptables. After receiving the packet, iptables uses the rules installed on the Node by kube-proxy in response to Service or Pod events to rewrite the destination of the packet from the Service IP to a specific Pod IP(`pod2`).  
+`(pod1)->(pod2)`
+(4)Linux kernel's `conntrack` remembers this Pod Ip choice and future traffic is routed to it. This is leveraged when the destination pod has to reply back to the service. iptable rules will rewrite the return-back-destination from podip to serviceip and forward the reply to it.  
+`(pod1)<-(pod2) [iptable rule rewrites src from pod2 to svc1 from conntrack]
+(pod1)<-(svc1)` 
+
+### Reference
+[Kevin Sookocheff's blog]
+
+[Kevin Sookocheff's blog]: https://sookocheff.com/post/kubernetes/understanding-kubernetes-networking-model/#kubernetes-basic

@@ -1,5 +1,5 @@
 """ Illustrate decorators """
-def print_line(func, length=10):
+def print_border(func, length=10):
 
     def inner(*args, **kwargs):
         print '-' * length
@@ -23,17 +23,17 @@ def log_call(func):
     return inner
 
 
-@print_line
+@print_border
 @log_call
 def add(a, b=5):
     return a + b
 
-@print_line
+@print_border
 @log_call
 def sub(a, b):
     return a - b
 
-@print_line
+@print_border
 @log_call
 def printer(string):
     print string

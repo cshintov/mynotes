@@ -1,1 +1,1 @@
-2019-11-12-What-is-functional-programming.markdown
+2019-11-18-what-happens-when-you-delete-a-pod.markdown

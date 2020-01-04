@@ -1,7 +1,9 @@
-
-
- 
-
+---
+layout: post
+title: Containers, Pods and Deployments
+date: 2020-01-04 14:43:49 +0553
+categories: [k8s, docker, containers]
+---
 What exactly is a container, a pod and a deployment? How they differ? Where they run?
 A Container aka “a process and a bunch of namespaces”
 
@@ -32,5 +34,3 @@ A kubernetes cluster consists of two types of nodes: masters and workers. Genera
 
 A logical view of a Node.
 [Enablement > A tale of abstractions - containers, pods and deployments > k8s-service.png]
-
- 

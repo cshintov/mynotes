@@ -11,3 +11,6 @@ deploy: update
 
 new:
 	python codes/add_blog.py
+
+dev:
+	bundle exec jekyll serve

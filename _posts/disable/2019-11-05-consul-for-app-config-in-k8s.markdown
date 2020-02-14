@@ -1,5 +1,6 @@
 ---
 layout: post
+published: false
 title:  "Consul in k8s, for app config management! [WIP]"
 date:   2019-11-03 17:02:34 +0530
 categories: python fp

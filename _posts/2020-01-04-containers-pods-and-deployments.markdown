@@ -1,9 +1,15 @@
 ---
 layout: post
-title: Containers, Pods and Deployments
+title: Containers, Pods and Deployments - The Big Picture.
 date: 2020-01-04 14:43:49 +0553
 categories: [k8s, docker, containers]
 ---
+
+Summary:
+    A process, container, pod, deployment: these are different levels of
+    abstractions of your running software. Process managed by OS, container by
+    container runtime, pod/deployment by kubernetes.
+
 What exactly is a container, a pod and a deployment? How they differ? Where they run?
 A Container aka “a process and a bunch of namespaces”
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Fun with fibonacci!"
-date:   2019-11-02 13:45:34 +0530
+date:   2020-05-08 22:12:42 +0530
 categories: jekyll update
 tags: [python]
 ---

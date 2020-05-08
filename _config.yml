@@ -5,7 +5,7 @@ url: "https://shendao.netlify.com/"
 # THEME-SPECIFIC CONFIGURATION
 title: Shinto C V
 description: "My notes on stuff!"      # used by search engines
-avatar: assets/img/malakh.jpg                         # Empty for no avatar in navbar
+avatar: assets/img/avatars/lambda.png                         # Empty for no avatar in navbar
 favicon: assets/favicon.ico                             # Icon displayed in the tab
 
 # Header and footer text

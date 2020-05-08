@@ -4,12 +4,13 @@ url: "https://shendao.netlify.com/"
 
 # THEME-SPECIFIC CONFIGURATION
 title: Shinto C V
-description: "My notes on stuff!"      # used by search engines
+description: "A tale of abstractions. Shinto C V. Python. Kubernetes. Programming. Code. Clojure.
+functional programming. lambda."      # used by search engines
 avatar: assets/img/avatars/lambda.png                         # Empty for no avatar in navbar
 favicon: assets/favicon.ico                             # Icon displayed in the tab
 
 # Header and footer text
-header_text: My notes and thoughts!                                           # Change Blog header text
+header_text: "A tale of abstractions!"
 header_feature_image: assets/img/pexels/chess.jpg
 footer_text: >
     "Ars longae, vita brevis, occasio praeceps, experimentum periculosum, iudecium dificile"

@@ -12,6 +12,7 @@ save:
 
 deploy: 
 	git push origin $(shell git rev-parse --abbrev-ref HEAD):deploy -f
+	netlify watch
 
 new:
 	python codes/add_blog.py

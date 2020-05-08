@@ -3,7 +3,7 @@ layout: post
 title:  "Fun with fibonacci!"
 date:   2020-05-08 22:12:42 +0530
 categories: jekyll update
-tags: [python]
+tags: [python, fibonacci, memoization, dynamic programming]
 ---
 I love [fibonacci] series! 
 <br><br>
@@ -24,7 +24,7 @@ Mathematically speaking:
 
 Easiest and most intuitive way to write a fibonacci function is the recursive way.  Just convert the mathematical definition to a programmatic one and you are done.
 
-### Python implementation of fibonacci <br>
+### Pythonic fibonacci <br>
 {% highlight python %}
 def fib(n):
     assert n > 0, "n should be positive integer"
@@ -36,8 +36,10 @@ def fib(n):
 print fib(1), fib(2), fib(3)
 #=> prints '1 1 2' to STDOUT.
 {% endhighlight %}
-<br>
-But there is a slight hiccup. If we want to find out the fibonacci number of a big number there will be a lot of redundant calculation, which is time consuming, and we get the dreaded exponential growth!
+
+But there is a slight hiccup! 
+
+If we want to find out the fibonacci number of a big number there will be a lot of redundant calculation, which is time consuming, and we get the dreaded exponential growth!
 
 For example: 
 ```
@@ -47,14 +49,19 @@ fib(523) = fib(522) + fib(521)
 fib(522) is calcualated twice. And fib(521), fib(520), and so on... What a waste!
 ```
 <br>
-So what do we do? Trade off some memory for computation and profit!
+So what do we do? Trade off some memory for computation! As they say engineering is all about finding the right trade-off's.
 
-Just store the already computed values in a lookup table.  If already computed, return it from the table, 
-else compute and update the table with it, and return. 
+Here's what we can do.
 
-This technique is called [memoization], (think memorization ;)!
+Just store the already computed values in a lookup table. If if it's there, return it from the table, 
+else compute `fib(n)` and update the table with it, and return the newly minted value. 
 
-### Memoized fibonacci implementation: <br>
+This technique is called [memoization], (think memorization ;)! 
+
+[Memoization] is an important technique used for [dynamic programming]. In fact the solution given 
+below is one such case.
+
+### Memoized fibonacci <br>
 {% highlight python %}
 def fib(n, fibtable={}):
     assert n > 0, "n should be positive integer"
@@ -75,3 +82,4 @@ assert fib(100) == fib(99) + fib(98)
 [memoization]: https://en.wikipedia.org/wiki/Memoization
 [time complexity]: https://en.wikipedia.org/wiki/Time_complexity
 [golden ratio]: https://en.wikipedia.org/wiki/Golden_ratio#Relationship_to_Fibonacci_sequence
+[dynamic programming]: https://en.wikipedia.org/wiki/Dynamic_programming

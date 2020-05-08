@@ -1,4 +1,5 @@
 ---
+published: false
 layout: post
 title: what happens when you delete a pod
 date: 2019-11-18 16:54:55 +0553

@@ -1,6 +1,7 @@
 ---
+published: false
 layout: post
-title: "Functional programming with Python! [WIP]"
+title: "Functional programming with Python!"
 date: 2019-11-12 11:32:43 +0553
 categories: common
 tags: [python, fp]
@@ -28,7 +29,6 @@ tags: [python, fp]
 #### Functional elements of Python
 * map, filter,reduce and lambda.
 * list comprehension, generator expressions.
-
 
 ---
 

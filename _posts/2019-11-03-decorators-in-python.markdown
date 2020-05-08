@@ -1,4 +1,5 @@
 ---
+published: false
 layout: post
 title:  "Beautify your functions with decorators!"
 date:   2019-11-03 17:02:34 +0530
@@ -7,13 +8,17 @@ tags: [python, fp]
 ---
 Functions are beautiful when they are small! 
 
-They are small when they do only one thing as recommended by the [single responsibility] principle. One way to achieve this is by using decorators.
+They are small when they do only one thing. Just what [single responsibility] principle recommends. 
+
+One way to achieve this is by using decorators.
 
 A decorator is used to add something extra to a function without modifying the actual function definition.
 
-For example if we want to log the calling function to STDOUT, instead of adding it to each and every function definition, we can define a decorator which does this and decorate all the functions with it.
+For example if we want to log the calling of a function, adding it to each and every function is ugly, and not very [DRY]. 
 
-### Logging calling function with decorators: <br>
+Instead, we can define a [decorator] which does this and decorate all the functions with it.
+
+### Log calling of a function with a decorator: <br>
 ``` python
 def log_call(func):
 
@@ -68,3 +73,5 @@ print add(2, b=3)
 Calling any function decorated with `log_call` will log the call and execute the called function. This decorator might be useful while debugging your code.
 
 [single responsibility]: https://en.wikipedia.org/wiki/Single_responsibility_principle
+[DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
+[decorator]: https://realpython.com/primer-on-python-decorators/

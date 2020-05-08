@@ -1,4 +1,5 @@
 ---
+published: false
 layout: post
 title: Containers, Pods and Deployments - The Big Picture.
 date: 2020-01-04 14:43:49 +0553

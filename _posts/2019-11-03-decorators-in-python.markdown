@@ -1,24 +1,27 @@
 ---
-published: false
+published: true
 layout: post
-title:  "Beautify your functions with decorators!"
-date:   2019-11-03 17:02:34 +0530
+title: "Beautify your functions with decorators!"
+date: 2020-05-09 10:04:31 +0530
 categories: python fp
-tags: [python, fp]
+tags: [python, decorators, DRY, SRP, functional programming, closure]
 ---
 Functions are beautiful when they are small! 
 
-They are small when they do only one thing. Just what [single responsibility] principle recommends. 
+They are small when they do only one thing. A sort of [single responsibility principle] 
+for functions, if you will.
 
-One way to achieve this is by using decorators.
+One way to achieve this is by using decorators. 
 
-A decorator is used to add something extra to a function without modifying the actual function definition.
+A [decorator] can be used to add some extra functionality to a function without modifying the actual function definition.
 
-For example if we want to log the calling of a function, adding it to each and every function is ugly, and not very [DRY]. 
+For example if we want to log the calling of a function, adding that functionality to a function 
+definition violates the [single responsibility principle]. Besides, adding it to each and every 
+function is ugly, and not very [DRY]. 
 
-Instead, we can define a [decorator] which does this and decorate all the functions with it.
+Instead, we can define a decorator which does this and decorate all the functions with it.
 
-### Log calling of a function with a decorator: <br>
+### Log calling of a function with a decorator
 ``` python
 def log_call(func):
 
@@ -72,6 +75,23 @@ print add(2, b=3)
 
 Calling any function decorated with `log_call` will log the call and execute the called function. This decorator might be useful while debugging your code.
 
-[single responsibility]: https://en.wikipedia.org/wiki/Single_responsibility_principle
+### How does it work?
+
+Whenever a function is decorated with `log_call` we are baking a new function with the additional
+functionality and assigning the decorated function's name to it. 
+
+When we call `add`, we are actually calling the `decorated add`.
+
+```
+@log_call
+def add(a, b=5)
+```
+is a syntactig sugar for:
+```
+add = log_call(add) 
+print add(2, 3) # calling decorated 'add'
+```
+
+[single responsibility principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
 [DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
-[decorator]: https://realpython.com/primer-on-python-decorators/
+[decorator]: https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators

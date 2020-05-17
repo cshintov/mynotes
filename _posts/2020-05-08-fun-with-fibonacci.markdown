@@ -2,7 +2,6 @@
 layout: post
 title:  "Fun with fibonacci!"
 date:   2020-05-08 22:12:42 +0530
-categories: jekyll update
 tags: [python, fibonacci, memoization, dynamic programming]
 ---
 I love [fibonacci] series! 

@@ -3,7 +3,6 @@ published: true
 layout: post
 title: "Beautify your functions with decorators!"
 date: 2020-05-09 10:04:31 +0530
-categories: python fp
 tags: [python, decorators, DRY, SRP, functional programming, closure]
 ---
 Functions are beautiful when they are small! 

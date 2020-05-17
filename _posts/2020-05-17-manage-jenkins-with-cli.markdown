@@ -2,7 +2,7 @@
 layout: post
 title: Manage your Jenkins with CLI
 date: 2020-05-17 11:37:02 +0553
-tags: [jenkins, devops, jenkins-cli, automation, ci/cd]
+tags: [jenkins, devops, jenkins-cli, automation, ci/cd, DRY]
 ---
 Modern software is incredibly complex. That makes operations a hard job.
 
@@ -66,7 +66,7 @@ Use `sed` or `envsubst` to generate configs for new jobs and fire up a create jo
 ### Reference
 
 CLI for jenkins lets you do most of the things you can do with Jenkins. For additional info please refer 
-official documentation for [Managing Jenkins with CLI].
+official documentation for [managing jenkins with cli].
 
 
 [JENKINS_URL/jnlpJars/jenkins-cli.jar]: https://jenkins_url/jnlpJars/jenkins-cli.jar

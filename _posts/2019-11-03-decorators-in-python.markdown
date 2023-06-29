@@ -5,92 +5,54 @@ title: "Beautify your functions with decorators!"
 date: 2020-05-09 10:04:31 +0530
 tags: [python, decorators, DRY, SRP, functional programming, closure]
 ---
-Functions are beautiful when they are small! 
 
-They are small when they do only one thing. A sort of [single responsibility principle] 
-for functions, if you will.
+Hello coders! I'm going to take you on a magical journey through one of Python's most enchanted features: Decorators. Oh yes, and believe me when I say, this isn't your grandma's interior design. We're diving into a world where Python's old-school functions get a mind-blowing, reality-altering, time-traveling facelift.
 
-One way to achieve this is by using decorators. 
+Now, let's be real. We've all been there. You're chugging away at your code, your function is doing exactly what it's supposed to do, and life is just peachy. But then, the universe decides to throw a wrench into your perfect coding machinery. You need your function to do a little extra, but you don't want to tamper with its existing elegance.
 
-A [decorator] can be used to add some extra functionality to a function without modifying the actual function definition.
+Enter: Python decorators.
 
-For example if we want to log the calling of a function, adding that functionality to a function 
-definition violates the [single responsibility principle]. Besides, adding it to each and every 
-function is ugly, and not very [DRY]. 
+Like a mystical wizard with a magic wand, Python decorators swoop in and alter the behavior of your function without the need for any invasive surgery. It's like the proverbial cherry on top of your function sundae, sprinkling in some extra functionality while preserving the original flavor. It's like turning your function into a Transformer, more than meets the eye.
 
-Instead, we can define a decorator which does this and decorate all the functions with it.
+Before we get to the meat of it, let's take a step back. What the heck is a Python decorator anyway?
 
-### Log calling of a function with a decorator
-``` python
-def log_call(func):
+Let's say you've got a Python function, a simple, innocent little block of code. Now, you want this function to put on a Superman cape and start doing some extra heavy lifting. The Python decorator is that magical wardrobe that lets your function step in as Clark Kent and step out as Superman.
 
-    def inner(*args, **kwargs):
-        print "calling {}".format(func.__name__)
-        if args:
-            print "with arguments: {}".format(str(args))
-        if kwargs:
-            print "with keyword arguments: {}".format(str(kwargs))
-        return func(*args, **kwargs)
+In Python, everything is an object, even functions. Functions can be passed around, returned, you name it. A decorator is simply a function that takes another function, does something with it, and then hands it back. It's like a fancy function dressing room.
 
-    return inner
+Here's a simple example:
 
+```python
+def my_decorator(func):
+    def wrapper():
+        print("Do something before the function call")
+        func()
+        print("Do something after the function call")
+    return wrapper
 
-@log_call
-def add(a, b=5):
-    return a + b
-
-@log_call
-def sub(a, b):
-    return a - b
-
-@log_call
-def printer(string):
-    print string
-
-print add(2, 3)
-print sub(2, 3)
-printer("Hello world!")
-print add(2, b=3)
+@my_decorator
+def say_hello():
+    print("Hello!")
 ```
 
-```
- OUTPUT
+Did you see that? That's the magic right there. The @my_decorator syntax is Python's way of saying "let's take this function for a spin through the decorator". It's as if say_hello() had a quick trip to the costume department, put on a superhero outfit, and came back with some added superpowers.
 
- calling add
- with arguments: (2, 3)
- 5
- calling sub
- with arguments: (2, 3)
- -1
- calling printer
- with arguments: ('Hello world!',)
- Hello world!
- calling add
- with arguments: (2,)
- with keyword arguments: {'b': 3}
- 5
+Let's call the function now:
 
+```python
+say_hello()
 ```
 
-Calling any function decorated with `log_call` will log the call and execute the called function. This decorator might be useful while debugging your code.
-
-### How does it work?
-
-Whenever a function is decorated with `log_call` we are baking a new function with the additional
-functionality and assigning the decorated function's name to it. 
-
-When we call `add`, we are actually calling the `decorated add`.
+And voila! You'll see:
 
 ```
-@log_call
-def add(a, b=5)
-```
-is a syntactig sugar for:
-```
-add = log_call(add) 
-print add(2, 3) # calling decorated 'add'
+Do something before the function call
+Hello!
+Do something after the function call
 ```
 
-[single responsibility principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
-[DRY]: https://en.wikipedia.org/wiki/Don%27t_repeat_yourself
-[decorator]: https://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators
+Decorators can be as simple or as complex as you need them to be, adding any number of additional layers to your function. Like an onion, or a parfait, because everyone likes parfait. Decorators let you add reusable blocks of functionality, making your code DRYer than the Sahara desert and more modular than a Lego set.
+
+Python decorators, ladies and gentlemen: the magic wand that turns your everyday functions into supercharged coding superheroes. They're not just a feature, they're a party trick that makes you the life of the coding fiesta.
+
+Until next time, stay magical, coders!

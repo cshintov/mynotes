@@ -25,10 +25,10 @@ def fib(n):
         return 1
 
     return fib(n-1) + fib(n-2)
-{% endhighlight %}
 
 print fib(1), fib(2), fib(3)
 #=> prints '1 1 2' to STDOUT.
+{% endhighlight %}
 
 But wait, the waters are getting choppy! When we're dealing with big numbers, our Fibonacci function starts to trip over itself. It's re-calculating the same values over and over again like a broken record player. What a colossal waste of precious time!
 

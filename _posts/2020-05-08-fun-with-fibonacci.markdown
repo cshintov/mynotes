@@ -4,26 +4,20 @@ title:  "Fun with fibonacci!"
 date:   2020-05-08 22:12:42 +0530
 tags: [python, fibonacci, memoization, dynamic programming]
 ---
-I love [fibonacci] series! 
-<br><br>
-Besides, having the [golden ratio] between its adjacent numbers, it can be used to illustrate important concepts in programming. It's recursive implementation is elegant and with [memoization], we can improve it's time complexity.
+Prepare yourselves, ladies and gentlemen, for we're diving into the depths of Fibonacci and the wonders of its mysteries!
 
-What's a fibonacci? It's the following series. <br><br>
-`1, 1, 2, 3, 5, 8, 13, ...`
+The Fibonacci series. Ah, what a wonder it is! It's more than just a series of numbers; it's an elegant dance between digits, an encapsulation of the Golden Ratio, and a playground for coders to frolic in. We're going to crack this nut wide open!
 
-How is it generated? By adding two previous numbers. <br>
+What's the Fibonacci series, you ask? Imagine a series that builds upon itself, where each number is the sum of the two that came before it, like a winding staircase leading to infinity. In the mathematical tongue, we'd say:
 
-Mathematically speaking:
-
-```
-    When n is a postive integer
+{% highlight python %}
+    When n is a positive integer
     f(n) = 1 # when n <= 2
     f(n) = f(n-1) + f(n-2) # when n > 2
-```
+{% endhighlight %}
 
-Easiest and most intuitive way to write a fibonacci function is the recursive way.  Just convert the mathematical definition to a programmatic one and you are done.
+Take the leap and scribe this into Python, and voila! Here's a Pythonic Fibonacci for you:
 
-### Pythonic fibonacci <br>
 {% highlight python %}
 def fib(n):
     assert n > 0, "n should be positive integer"
@@ -36,31 +30,19 @@ print fib(1), fib(2), fib(3)
 #=> prints '1 1 2' to STDOUT.
 {% endhighlight %}
 
-But there is a slight hiccup! 
+But wait, the waters are getting choppy! When we're dealing with big numbers, our Fibonacci function starts to trip over itself. It's re-calculating the same values over and over again like a broken record player. What a colossal waste of precious time!
 
-If we want to find out the fibonacci number of a big number there will be a lot of redundant calculation, which is time consuming, and we get the dreaded exponential growth!
-
-For example: 
-```
+{% highlight python %}
 fib(524) = fib(523) + fib(522)
 fib(523) = fib(522) + fib(521)
 
-fib(522) is calcualated twice. And fib(521), fib(520), and so on... What a waste!
-```
-<br>
-So what do we do? Trade off some memory for computation! As they say engineering is all about finding the right trade-off's.
+fib(522) is calculated twice. And fib(521), fib(520), and so on... It's a disaster!
+{% endhighlight %}
 
-Here's what we can do.
+This is where our inner engineer comes to the rescue. We're going to outsmart the system and store the computed values in a lookup table. It's like building a library of Fibonacci numbers! This sly technique is called memoization, (think memorization, but with an 'o')!
 
-Just store the already computed values in a lookup table. If if it's there, return it from the table, 
-else compute `fib(n)` and update the table with it, and return the newly minted value. 
+Memoization is an old trick up the sleeve of dynamic programming. Here's how you wield it in the battle against redundancy:
 
-This technique is called [memoization], (think memorization ;)! 
-
-[Memoization] is an important technique used for [dynamic programming]. In fact the solution given 
-below is one such case.
-
-### Memoized fibonacci <br>
 {% highlight python %}
 def fib(n, fibtable={}):
     assert n > 0, "n should be positive integer"
@@ -77,8 +59,4 @@ print fib(100)
 assert fib(100) == fib(99) + fib(98)
 {% endhighlight %}
 
-[fibonacci]: https://en.wikipedia.org/wiki/Fibonacci_number
-[memoization]: https://en.wikipedia.org/wiki/Memoization
-[time complexity]: https://en.wikipedia.org/wiki/Time_complexity
-[golden ratio]: https://en.wikipedia.org/wiki/Golden_ratio#Relationship_to_Fibonacci_sequence
-[dynamic programming]: https://en.wikipedia.org/wiki/Dynamic_programming
+So there you have it, folks! The Fibonacci series, dressed in Python, and turbocharged with the power of memoization. Now go forth, and Fibonacci like you've never Fibonacci'd before​!

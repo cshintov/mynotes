@@ -1,0 +1,42 @@
+baseURL = "https://shendao.in/"
+languageCode = "en-us"
+DefaultContentLanguage = "en"
+theme = ["github.com/theNewDynamic/gohugo-theme-ananke"]
+disablePathToLower = true
+SectionPagesMenu = "main"
+Paginate = 3
+googleAnalytics = ""
+enableRobotsTXT = true
+resourceDir = "../resources"
+
+[services]
+  [services.disqus]
+    shortname = 'shintocv'
+
+[languages]
+  [languages.en]
+    title = "My notes."
+    weight = 1
+    contentDir = "content"
+
+[sitemap]
+filename = "sitemap.xml"
+changefreq = "monthly"
+priority = 0.5
+
+[params]
+description = "My notes."
+author = ""
+favicon = ""
+site_logo = ""
+text_color = ""
+background_color_class = ""  # "bg-black" from https://tachyons.io/docs/themes/skins/
+recent_posts_number = 3
+
+[[params.ananke_socials]]
+name = "twitter"
+url = "https://twitter.com/codengod"
+
+[[params.ananke_socials]]
+name = "github"
+url = "https://github.com/cshintov"

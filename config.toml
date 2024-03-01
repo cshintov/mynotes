@@ -10,13 +10,13 @@ enableRobotsTXT = true
 resourceDir = "../resources"
 
 [services.disqus]
-shortname = 'cshintov'
+shortname = 'shintocv'
 
 [languages]
   [languages.en]
     title = "My notes."
     weight = 1
-    contentDir = "content/post"
+    contentDir = "content"
 
 [sitemap]
 filename = "sitemap.xml"

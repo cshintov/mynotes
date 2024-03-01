@@ -7,20 +7,16 @@ SectionPagesMenu = "main"
 Paginate = 3
 googleAnalytics = ""
 enableRobotsTXT = true
+resourceDir = "../resources"
 
 [services.disqus]
 shortname = 'cshintov'
 
 [languages]
   [languages.en]
-    title = "Ananke"
+    title = "My notes."
     weight = 1
-    contentDir = "content/en"
-
-  [languages.fr]
-    title = "Ananke Fr"
-    weight = 2
-    contentDir = "content/fr"
+    contentDir = "content/post"
 
 [sitemap]
 filename = "sitemap.xml"
@@ -38,7 +34,7 @@ recent_posts_number = 3
 
 [[params.ananke_socials]]
 name = "twitter"
-url = "https://twitter.com/cshintov"
+url = "https://twitter.com/codengod"
 
 [[params.ananke_socials]]
 name = "github"

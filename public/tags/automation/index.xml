@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>automation on </title>
+    <link>/tags/automation/</link>
+    <description>Recent content in automation on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 17 May 2020 14:15:53 +0000</lastBuildDate>
+    <atom:link href="/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configure gitlab webhook through API</title>
+      <link>/post/2020-05-17-configure-gitlab-webhook-through-api/</link>
+      <pubDate>Sun, 17 May 2020 14:15:53 +0000</pubDate>
+      <guid>/post/2020-05-17-configure-gitlab-webhook-through-api/</guid>
+      <description>Just as we can manage Jenkins with CLI, we can converniently interact with our gitlab server through its API.
+When you have many microservices that needs CI which auto-triggers on git events, you might need webhooks configured for each project, may be even multiple hooks for the same project.
+In case of Jenkins the gitlab plugin provides the webhook url for each pipeline we create.
+We can avoid manually configuring webhooks each time a new pipeline is created if we use the API.</description>
+    </item>
+    <item>
+      <title>Manage your Jenkins with CLI</title>
+      <link>/post/2020-05-17-manage-jenkins-with-cli/</link>
+      <pubDate>Sun, 17 May 2020 11:37:02 +0000</pubDate>
+      <guid>/post/2020-05-17-manage-jenkins-with-cli/</guid>
+      <description>Modern software is incredibly complex. That makes operations a hard job.
+Architectures like microservices, increases the operational complexity multiple orders of magnitude. So, its crucial that every part of operations is automated. Because when adopting such patterns there is an explosion in the number of components that need to be maintained. Doing this manually is inefficient as well as painful for the engineers who are tasked to do the maintenance. One such area is managing your CI ojbects.</description>
+    </item>
+  </channel>
+</rss>

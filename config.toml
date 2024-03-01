@@ -9,8 +9,9 @@ googleAnalytics = ""
 enableRobotsTXT = true
 resourceDir = "../resources"
 
-[services.disqus]
-shortname = 'shintocv'
+[services]
+  [services.disqus]
+    shortname = 'shintocv'
 
 [languages]
   [languages.en]
